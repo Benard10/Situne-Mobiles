@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situne Mobiles | Phone Sales & Repairs</title>
+    <link rel="icon" type="image/jpeg" href="assets/Logo.jpeg">
+    <link rel="shortcut icon" type="image/jpeg" href="assets/Logo.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #ffffff;
+            --gray: #f8fafc;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--gray);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--light);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            background: url('assets/Home Pic.jpeg') no-repeat center center/cover;
+            color: rgb(221, 217, 217);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .service-card {
+            margin: 20px;
+            width: 280px;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .service-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product-card {
+            margin: auto;
+            width: 280px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image-container {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            text-align: center; padding: 15px;
+        }
+
+        .product-category {
+            display: block;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            padding: 20px;
+        }
+
+        .about-text {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            justify-items: center;
+        }
+
+        .gallery-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-item img {
+            max-width: 200px; 
+            width: 100%;      
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        .contact-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .contact-text p {
+            color: #555;
+            margin: 0;
+        }
+
+        .map-container {
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 300px;
+                order: -1;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav.active {
+                left: 0;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+            }
+            
+            .nav-link {
+                width: 100%;
+                padding: 10px 0;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-img {
+                height: 30px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Cart Modal Styles */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-container {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-content {
+            padding: 20px;
+        }
+
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 15px;
+            background: #f8f9fa;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 15px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-display {
+            width: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cart-summary {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .cart-summary-label {
+            font-weight: 500;
+        }
+
+        .cart-summary-value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .cart-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-checkout {
+            background: var(--primary);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-checkout:hover {
+            background: var(--primary-dark);
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #777;
+        }
+
+        .empty-cart-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        /* Cart Notification */
+        .cart-notification {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s, fadeOut 0.3s 2.7s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; bottom: 80px; }
+            to { opacity: 1; bottom: 100px; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; bottom: 100px; }
+            to { opacity: 0; bottom: 80px; }
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Removed .navbar styles; using .header instead */
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .gallery-item {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery-item img {
+            max-width: 100;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .product-image-container {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f4ff 100%);
+            padding: 15px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-info {
+            padding: 12px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+            
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/254729482189?text=Hi%20Situne%20Mobiles,%20I'm%20interested%20in%20your%20products/services." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <nav class="header" id="header">
+        <div class="container">
+            <a class="header-brand" href="#">
+                <img src="assets/Logo.jpeg" alt="Situne Mobiles Logo" height="40">
+                <span>Situne Mobiles</span>
+            </a>
+            <ul class="nav-list" id="nav">
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#services">Services</a></li>
+                <li><a class="nav-link" href="#products">Products</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container text-center text-white">
+            <h1 class="hero-title">Your Trusted Mobile & Computer Experts</h1>
+            <p class="hero-subtitle">Quality devices, professional repairs, and premium accessories at affordable prices</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">
+                    <i class="fas fa-shopping-bag"></i> Shop Now
+                </a>
+                <a href="#contact" class="btn btn-outline-light">
+                    <i class="fas fa-phone-alt"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">Phone Sales</h3>
+                    <p class="service-description">We offer a wide range of smartphones from top brands at competitive prices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3 class="service-title">Computer Sales</h3>
+                    <p class="service-description">From powerful laptops to efficient desktops, we provide quality computing devices for all your needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="service-title">Device Repairs</h3>
+                    <p class="service-description">Our expert technicians can fix all types of mobile and computer issues, including screen replacements and more.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="service-title">Accessories</h3>
+                    <p class="service-description">Complete your device with our premium accessories - cases, chargers, earphones, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+    <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/Redmi-13C.jpg" alt="REDMI-13C" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">REDMI-13C</h3>
+            <div class="product-price">KES 9,800</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Redmi models also available</p>
+        <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/xiaomi_redmi_13c-12689.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/SAMSUNG Galaxy S20 FE 5G.jpg" alt="SAMSUNG Galaxy S20 FE 5G" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">SAMSUNG Galaxy S20 FE 5G</h3>
+            <div class="product-price">KES 21,000</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Samsung models also available</p>
+        <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/samsung_galaxy_s20_fe_5g-10377.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/IPHONE 13 PRO MAX.jpeg" alt="IPHONE 13 PRO MAX" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">IPHONE 13 PRO MAX</h3>
+            <div class="product-price">KES 70,000</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other IPhone models also available</p>
+            <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/apple_iphone_13_pro_max-11089.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/OPPO A3S.webp" alt="OPPO A3S" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">OPPO A3S</h3>
+            <div class="product-price">KES 5,500</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Oppo models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/oppo_a3s-9269.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/VIVO V40lite.webp" alt="VIVO V40lite" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">VIVO V40lite</h3>
+            <div class="product-price">KES 31,900</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Vivo models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/vivo_v40_lite-13207.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/TECNO CAMON 17P（CG7）.webp" alt="TECNO CAMON 17P（CG7）" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">TECNO CAMON 17P（CG7）</h3>
+            <div class="product-price">KES 13,500</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Tecno models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/tecno_camon_17p-10896.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/INFINIX NOTE 12 5G（X671）.webp" alt="INFINIX NOTE 12 5G（X671）" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">INFINIX NOTE 12 5G（X671）</h3>
+            <div class="product-price">KES 9,500</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Infinix models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/infinix_note_12_5g-11662.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/ITEL A24 2023（A507LSP）.webp" alt="ITEL A24 2023（A507LSP）" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">ITEL A24 2023（A507LSP）</h3>
+            <div class="product-price">KES 3,200</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Itel models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://gsmarena.com.in/itel-a24-pro-270" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/PHILIPS ESSENCE 10 (S6210).jpg" alt="PHILIPS ESSENCE 10 (S6210)" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">PHILIPS ESSENCE 10 (S6210)</h3>
+            <div class="product-price">KES 8,000</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other Philips models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/philips_s6210_essence_10-13556.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/ZTE BLADE V50D.webp" alt="ZTE BLADE V50D" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphones</span>
+            <h3 class="product-title">ZTE BLADE V50D</h3>
+            <div class="product-price">KES 11,500</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other ZTE models also available</p>
+             <!-- ✅ Specs Link -->
+            <a href="https://www.gsmarena.com/zte_blade_v50-12613.php" 
+            target="_blank" 
+            class="specs-link">
+            View Specs
+            </a>
+            </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/Amaya Charger.jpg" alt="AMAYA 3.1A USB SMART CHARGER" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphone Accessories</span>
+            <h3 class="product-title">AMAYA 3.1A USB SMART CHARGER</h3>
+            <div class="product-price">KES 160</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other fast chargers also available</p>
+            </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/Amaya Earbuds.jpeg" alt="AMAYAWireless Sports Earbuds (TK05)" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphone Accessories</span>
+            <h3 class="product-title">AMAYAWireless Sports Earbuds (TK05)</h3>
+            <div class="product-price">KES 1,000</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other wireless earbuds available</p>
+            </div>
+        </div>
+
+        <!-- Product 13 -->
+        <div class="product-card">
+            <div class="product-image-container">
+            <img src="assets/Amaya-B-03-power bank.jpg" alt="AMAYA POWER BANK (B-03)" class="product-image">
+            </div>
+            <div class="product-info">
+            <span class="product-category">Smartphone Accessories</span>
+            <h3 class="product-title">AMAYA POWER BANK (B-03)</h3>
+            <div class="product-price">KES 600</div>
+            <div class="product-actions"></div>
+            <p class="other-models">Other powerbanks available</p>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Situne Mobiles</h2>
+            <div class="about-container">
+                <div class="about-content">
+                    <p class="about-text">Situne Mobiles is a leading provider of mobile devices, computers, and repair services in Kenya. Founded with a passion for technology and customer satisfaction, we've grown to become a trusted name in the industry.</p>
+                    <p class="about-text">Our team of certified technicians and sales professionals are dedicated to providing you with the best products and services tailored to your needs. We pride ourselves on offering genuine products with warranties and reliable after-sales support.</p>
+                    <p class="about-text">Whether you're looking for a new device, need repairs, or want quality accessories, Situne Mobiles is your one-stop shop for all things tech.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/Office.jpeg" alt="Situne Mobiles Store">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/Happy Client1.jpeg" alt="Repair Service">
+                    <p>Happy Client!</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/Happy Client.jpeg" alt="Happy Customer">
+                    <p>Happy Client!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Location</h3>
+                        <p>123 Tech Street, Nairobi, Kenya</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>+254 705 196 255</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p>info@situnemobiles.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Working Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                        <p>Saturday: 9:00 AM - 4:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2558.255958511637!2d36.82624106283903!3d-1.2879908014644137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTcnMTYuOSJTIDM2wrA0OSc0MC41IkU!5e1!3m2!1sen!2ske!4v1753463041646!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Situne Mobiles</h3>
+                    <p>Your trusted partner for quality mobile devices, computers, and repair services in Kenya.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/254729482189?text=Hi%20Situne%20Mobiles,%20I'm%20interested%20in%20your%20products/services." class="social-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#services" class="footer-link">Services</a></li>
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center mt-4">
+                <p id="copyright-year"></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h3 class="cart-title">Your Cart</h3>
+                <button class="close-cart" id="closeCart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be populated by JavaScript -->
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="cart-summary-row">
+                        <span class="cart-summary-label">Subtotal:</span>
+                        <span class="cart-summary-value" id="cartSubtotal">KES 0</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span class="cart-summary-label">Shipping:</span>
+                        <span class="cart-summary-value" id="shippingFee">KES 0</span>
+                    </div>
+                    <div class="cart-summary-row cart-total">
+                        <span class="cart-summary-label">Total:</span>
+                        <span class="cart-summary-value" id="cartTotal">KES 0</span>
+                    </div>
+                </div>
+                
+                <button class="btn-checkout" id="checkoutWhatsApp">
+                    <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+                </button>
+                
+                <div class="cart-buttons">
+                    <button class="btn btn-outline" id="continueShopping" style="width: 100%;">
+                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Confirm Your Details</h3>
+            <p><strong>Name:</strong> <span id="confirmName"></span></p>
+            <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+            <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
+            <p><strong>Message:</strong> <span id="confirmMessage"></span></p>
+            <div class="modal-actions">
+                <button id="sendToWhatsApp" class="btn btn-primary">Send to WhatsApp</button>
+                <button id="closeModal" class="btn btn-outline">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+        
+        if (mobileMenuBtn && nav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
+        
+        // Close mobile menu when clicking a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav) nav.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Cart functionality
+        const cart = {
+            items: [],
+            
+            // Load cart from localStorage
+            loadCart() {
+                const savedCart = localStorage.getItem('situneCart');
+                if (savedCart) {
+                    this.items = JSON.parse(savedCart);
+                }
+            },
+            
+            // Save cart to localStorage
+            saveCart() {
+                localStorage.setItem('situneCart', JSON.stringify(this.items));
+            },
+            
+            // Add item to cart
+            addItem(item) {
+                const existingItem = this.items.find(i => i.id === item.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.items.push({...item, quantity: 1});
+                }
+                
+                this.saveCart();
+                this.updateCartUI();
+                this.showNotification(`${item.name} added to cart`);
+            },
+            
+            // Remove item from cart
+            removeItem(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.saveCart();
+                this.updateCartUI();
+            },
+            
+            // Update item quantity
+            updateQuantity(id, quantity) {
+                if (quantity < 1) return;
+                
+                const item = this.items.find(i => i.id === id);
+                if (item) {
+                    item.quantity = quantity;
+                    this.saveCart();
+                    this.updateCartUI();
+                }
+            },
+            
+            // Calculate total price
+            calculateTotal() {
+                return this.items.reduce((total, item) => {
+                    return total + (item.price * item.quantity);
+                }, 0);
+            },
+            
+            // Update cart UI
+            updateCartUI() {
+                const cartItemsEl = document.getElementById('cartItems');
+                cartItemsEl.innerHTML = '';
+                
+                if (this.items.length === 0) {
+                    cartItemsEl.innerHTML = `
+                        <div class="empty-cart-message">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>Your Cart is Empty</h3>
+                            <p>Start shopping to add items to your cart</p>
+                        </div>
+                    `;
+                    document.getElementById('cartSubtotal').textContent = 'KES 0';
+                    document.getElementById('cartTotal').textContent = 'KES 0';
+                    return;
+                }
+                
+                this.items.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">KES ${item.price.toLocaleString()}</div>
+                            <div class="cart-item-actions">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <span class="quantity-display">${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                </div>
+                                <button class="remove-item" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsEl.appendChild(itemEl);
+                });
+                
+                const subtotal = this.calculateTotal();
+                document.getElementById('cartSubtotal').textContent = `KES ${subtotal.toLocaleString()}`;
+                document.getElementById('cartTotal').textContent = `KES ${subtotal.toLocaleString()}`;
+            },
+            
+            // Show notification when item is added to cart
+            showNotification(message) {
+                const notification = document.createElement('div');
+                notification.className = 'cart-notification';
+                notification.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            },
+            
+            // Generate WhatsApp message for checkout
+            generateWhatsAppMessage() {
+                let message = `Hi Situne Mobiles, I would like to order the following items:\n\n`;
+                
+                this.items.forEach((item, index) => {
+                    message += `${index + 1}. ${item.name} x${item.quantity} - KES ${(item.price * item.quantity).toLocaleString()}\n`;
+                });
+                
+                message += `\nTotal: KES ${this.calculateTotal().toLocaleString()}\n\n`;
+                message += `Please contact me to complete the order.`;
+                
+                return encodeURIComponent(message);
+            }
+        };
+        
+        // Initialize cart
+        cart.loadCart();
+        
+        // Add to cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            const name = button.dataset.name;
+            const price = parseInt(button.dataset.price);
+            const image = button.dataset.image;
+            
+            cart.addItem({ id, name, price, image });
+            });
+        });
+        
+        // WhatsApp inquiry buttons
+        document.querySelectorAll('.whatsapp-inquiry').forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.dataset.name;
+                const message = `Hi Situne Mobiles, I'm interested in your ${productName}. Please provide more details.`;
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/254705196255?text=${encodedMessage}`, '_blank');
+            });
+        });
+        
+        // Cart modal interactions
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const continueShopping = document.getElementById('continueShopping');
+        const checkoutWhatsApp = document.getElementById('checkoutWhatsApp');
+        
+        // Open cart modal
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.cart-icon') || e.target.classList.contains('cart-icon')) {
+                cartModal.classList.add('active');
+                cart.updateCartUI();
+            }
+        });
+        
+        // Close cart modal
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+        });
+        
+        continueShopping.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+        });
+        
+        // Checkout via WhatsApp
+        checkoutWhatsApp.addEventListener('click', () => {
+            if (cart.items.length === 0) return;
+            
+            const message = cart.generateWhatsAppMessage();
+            window.open(`https://wa.me/254705196255?text=${message}`, '_blank');
+        });
+        
+        // Cart item interactions (delegated)
+        document.getElementById('cartItems').addEventListener('click', (e) => {
+            const target = e.target;
+            
+            if (target.classList.contains('plus') || target.closest('.plus')) {
+                const btn = target.classList.contains('plus') ? target : target.closest('.plus');
+                const id = btn.dataset.id;
+                const item = cart.items.find(i => i.id === id);
+                if (item) {
+                    cart.updateQuantity(id, item.quantity + 1);
+                }
+            } 
+            else if (target.classList.contains('minus') || target.closest('.minus')) {
+                const btn = target.classList.contains('minus') ? target : target.closest('.minus');
+                const id = btn.dataset.id;
+                const item = cart.items.find(i => i.id === id);
+                if (item && item.quantity > 1) {
+                    cart.updateQuantity(id, item.quantity - 1);
+                }
+            } 
+            else if (target.classList.contains('remove-item') || target.closest('.remove-item')) {
+                const btn = target.classList.contains('remove-item') ? target : target.closest('.remove-item');
+                const id = btn.dataset.id;
+                cart.removeItem(id);
+            }
+        });
+        
+        // Contact form submission
+        document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+    const confirmationModal = document.getElementById('confirmationModal');
+    const confirmName = document.getElementById('confirmName');
+    const confirmEmail = document.getElementById('confirmEmail');
+    const confirmPhone = document.getElementById('confirmPhone');
+    const confirmMessage = document.getElementById('confirmMessage');
+    const sendToWhatsApp = document.getElementById('sendToWhatsApp');
+    const closeModal = document.getElementById('closeModal');
+
+    // Handle form submission
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        // Populate modal with form data
+        confirmName.textContent = name;
+        confirmEmail.textContent = email;
+        confirmPhone.textContent = phone;
+        confirmMessage.textContent = message;
+
+        // Show the modal
+        confirmationModal.style.display = 'flex';
+    });
+
+    // Handle sending to WhatsApp
+    sendToWhatsApp.addEventListener('click', function () {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        // Construct the WhatsApp message
+        const whatsappMessage = `Hello Situne Mobiles,%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AMessage: ${message}`;
+
+        // Redirect to WhatsApp API
+        window.open(`https://wa.me/254705196255?text=${whatsappMessage}`, '_blank');
+
+        // Close the modal
+        confirmationModal.style.display = 'none';
+    });
+
+    // Handle closing the modal
+    closeModal.addEventListener('click', function () {
+        confirmationModal.style.display = 'none';
+    });
+});
+        
+        // Confirmation modal actions
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('confirmationModal').style.display = 'none';
+        });
+        
+        document.getElementById('sendToWhatsApp').addEventListener('click', () => {
+            const name = document.getElementById('confirmName').textContent;
+            const email = document.getElementById('confirmEmail').textContent;
+            const phone = document.getElementById('confirmPhone').textContent;
+            const message = document.getElementById('confirmMessage').textContent;
+
+            // Construct the WhatsApp message
+            const whatsappMessage = `Hello Situne Mobiles,%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AMessage: ${message}`;
+
+            // Redirect to WhatsApp API
+            window.open(`https://wa.me/254705196255?text=${whatsappMessage}`, '_blank');
+
+            // Close the modal
+            document.getElementById('confirmationModal').style.display = 'none';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+      const copyrightYear = document.getElementById('copyright-year');
+      const currentYear = new Date().getFullYear();
+      copyrightYear.textContent = `@ ${currentYear} Situne Mobiles. All Rights Reserved.`;
+    </script>
+</body>
+</html>
