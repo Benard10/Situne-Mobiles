@@ -39,18 +39,14 @@
 
         /* Header Styles */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: var(--light);
-            box-shadow: var(--shadow);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            background-color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            transition: var(--transition);
         }
 
         .header.scrolled {
@@ -70,6 +66,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .header .nav-list {
+            display: none;
+            }
+
+            .header .mobile-menu-btn {
+            display: block;
+            }
+
+            @media (min-width: 768px) {
+            .header .nav-list {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header .mobile-menu-btn {
+                display: none;
+            }
         }
 
         .logo {
@@ -1039,7 +1054,7 @@
 </head>
 <body>
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/254729482189?text=Hi%20Situne%20Mobiles,%20I'm%20interested%20in%20your%20products/services." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/254112467723?text=Hi%20Situne%20Mobiles,%20I'm%20interested%20in%20your%20products/services." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1476,7 +1491,7 @@
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/254729482189?text=Hi%20Situne%20Mobiles,%20I'm%20interested%20in%20your%20products/services." class="social-link" target="_blank">
+                        <a href="https://wa.me/254112467723?text=Hi%20Situne%20Mobiles,%20I'm%20interested%20in%20your%20products/services." class="social-link" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
