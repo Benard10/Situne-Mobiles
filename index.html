@@ -149,6 +149,21 @@
             color: rgb(221, 217, 217);
             text-align: center;
             position: relative;
+            }
+
+            @media (max-width: 768px) {
+            .hero {
+                background-size: 100% auto;
+                background-position: center top;
+            }
+            }
+
+            @media (max-width: 576px) {
+            .hero {
+                background-size: 100% auto;
+                background-position: center top;
+                min-height: 50vh;
+            }
         }
 
         .hero-overlay {
